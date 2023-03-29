@@ -35,27 +35,28 @@ public class CarController : MonoBehaviour
     public float turnSensitivity = 1.0f;
     public float maxSteerAngle = 30.0f;
 
-    public Vector3 _centerOfMass;
+    public Transform _centerOfMass;
 
     public List<Wheel> wheels;
 
     float moveInput;
     float steerInput;
-
-    private Rigidbody carRb;
+    [HideInInspector]
+    public Rigidbody carRb;
     
 
     void Start()
     {
         carRb = GetComponent<Rigidbody>();
-        carRb.centerOfMass = _centerOfMass;
+        carRb.centerOfMass = _centerOfMass.localPosition;
     }
 
     void Update()
     {
+        //Debug.Log(carRb.velocity.magnitude);
         GetInputs();
         AnimateWheels();
-        //WheelEffects();
+        WheelEffects();
     }
     void LateUpdate()
     {
@@ -85,10 +86,10 @@ public class CarController : MonoBehaviour
     {
         if (moveInput != 0)
         {
+            carRb.velocity = gameObject.transform.forward * moveInput * 6;
             foreach (var wheel in wheels)
             {
-                carRb.velocity = gameObject.transform.forward * -moveInput * 10;
-                wheel.wheelCollider.motorTorque = moveInput * 600 * maxAcceleration * Time.deltaTime;
+                wheel.wheelCollider.motorTorque = moveInput * maxAcceleration * Time.deltaTime;
             }
         }
     }
@@ -111,7 +112,7 @@ public class CarController : MonoBehaviour
         {
             foreach (var wheel in wheels)
             {
-                wheel.wheelCollider.brakeTorque = 300 * brakeAcceleration * Time.deltaTime;
+                wheel.wheelCollider.brakeTorque = brakeAcceleration * Time.deltaTime;
             }
         }
         else
@@ -141,14 +142,15 @@ public class CarController : MonoBehaviour
         {
             //var dirtParticleMainSettings = wheel.smokeParticle.main;
 
-            if (Input.GetKey(KeyCode.Space) && wheel.axel == Axel.Rear && wheel.wheelCollider.isGrounded == true && carRb.velocity.magnitude >= 10.0f)
+            if (wheel.axel == Axel.Rear && wheel.wheelCollider.isGrounded == true && carRb.velocity.magnitude >= 5.0f)
             {
-                wheel.wheelEffectObj.GetComponentInChildren<TrailRenderer>().emitting = true;
+                wheel.wheelEffectObj.GetComponent<TrailRenderer>().emitting = true;
                 wheel.smokeParticle.Emit(1);
             }
             else
             {
-                wheel.wheelEffectObj.GetComponentInChildren<TrailRenderer>().emitting = false;
+                wheel.wheelEffectObj.GetComponent<TrailRenderer>().emitting = false;
+                wheel.smokeParticle.Clear();
             }
         }
     }
