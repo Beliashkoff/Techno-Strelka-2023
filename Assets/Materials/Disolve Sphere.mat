@@ -72,7 +72,7 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 1
     m_Colors:
-    - _Base_color: {r: 0.46751294, g: 0.3190192, b: 0.6320754, a: 0}
+    - _Base_color: {r: 0.16374363, g: 0.14097543, b: 0.3018868, a: 0}
     - _EdgeColor: {r: 0, g: 3.2627451, b: 23.968628, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8633494104762481590

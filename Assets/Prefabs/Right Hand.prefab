@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18899aa185f626143ae1fd5b2c33c869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handModelpref: {fileID: 8265230060884797615, guid: 3c99d0ba506360a43b8cea08ef805d25,
+  handModelpref: {fileID: 5686134208185362930, guid: 1fd3a7c43c8190f4d8c167ebde694364,
     type: 3}
   gripRef: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
