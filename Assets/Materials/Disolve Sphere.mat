@@ -57,7 +57,7 @@ Material:
     - _Blend: 0
     - _CastShadows: 0
     - _Cull: 0
-    - _CutoffHeight: 9
+    - _CutoffHeight: -9
     - _DstBlend: 10
     - _EdgeWidth: 0.38
     - _NoiseScale: 14.25
