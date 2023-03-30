@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(screenFade.fadeTime+1);
         transform.position = attachCarPoint.transform.position;
         transform.rotation = attachCarPoint.transform.rotation;
-        //transform.parent = attachCarPoint.transform;
+        transform.parent = attachCarPoint.transform;
         foreach (GameObject obj in objectsToDisable)
             obj.SetActive(false);
         screenFade.FadeIn();

@@ -86,7 +86,7 @@ public class CarController : MonoBehaviour
     {
         if (moveInput != 0)
         {
-            carRb.velocity = gameObject.transform.forward * moveInput * 6;
+            carRb.velocity = gameObject.transform.forward * moveInput * 10;
             foreach (var wheel in wheels)
             {
                 wheel.wheelCollider.motorTorque = moveInput * maxAcceleration * Time.deltaTime;

@@ -9,7 +9,7 @@ public class Joystic : MonoBehaviour
     private float startPosZ;
     public float curentJoysticPosX { get { return (transform.position.x - startPosX)/maxDistance; } }
     public float curentJoysticPosZ { get { return (transform.position.z - startPosZ)/maxDistance; } }
-    void Awake()
+    void Start()
     {
         startPosX = transform.position.x;
         startPosZ = transform.position.z;
